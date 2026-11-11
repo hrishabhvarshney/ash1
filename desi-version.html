@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#7a1f3d">
+<title>Ashi 💖 Cutie Potatoie</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Kalam:wght@300;400;700&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --maroon:#7a1f3d;--magenta:#c2185b;--gold:#d4a017;--marigold:#f4a300;--cream:#fff7e8;--blush:#ffdfe8;--ink:#5b1a33;--gap:16px;
+  --script:'Great Vibes','Brush Script MT',cursive;
+  --hand:'Kalam','Segoe Script',cursive;
+  --body:'Quicksand',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:var(--body);color:var(--ink);min-height:100vh;overflow-x:hidden;
+  background:
+    radial-gradient(#e8b9234a 1.4px,transparent 1.6px) 0 0/22px 22px,
+    radial-gradient(circle at 10% 0%,#fff 0,transparent 40%),
+    radial-gradient(circle at 90% 25%,#ffc2d6 0,transparent 45%),
+    linear-gradient(165deg,var(--cream),var(--blush)) fixed;
+  padding:0 max(14px,env(safe-area-inset-right)) calc(44px + env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));
+}
+
+/* Toran (festive hanging) */
+.toran{position:relative;display:flex;justify-content:space-around;align-items:flex-start;height:118px;margin:0 -14px;padding-top:env(safe-area-inset-top)}
+.toran::before{content:"";position:absolute;top:env(safe-area-inset-top);left:0;right:0;height:9px;background:repeating-linear-gradient(90deg,var(--marigold) 0 14px,var(--magenta) 14px 28px)}
+.hang{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;transform-origin:top center;animation:sway 3.2s ease-in-out infinite alternate;animation-delay:var(--d)}
+.hang i{display:block;width:1.5px;height:var(--len);background:var(--gold)}
+.hang svg{width:34px;height:48px}
+.mari{width:26px;height:26px;border-radius:50%;background:radial-gradient(circle,#b84a0a 0 18%,var(--marigold) 19% 55%,#ffd24d 56%);box-shadow:0 0 0 2px #f4a30055}
+@keyframes sway{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
+
+header{text-align:center;padding:6px 8px 26px;position:relative;z-index:1}
+.hello{font-family:var(--hand);font-size:clamp(1.1rem,4.5vw,1.5rem);color:var(--magenta)}
+h1{font-family:var(--script);font-weight:400;font-size:clamp(3.4rem,17vw,6.4rem);line-height:1;
+  background:linear-gradient(90deg,var(--maroon),var(--magenta),var(--maroon));-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 4px 10px rgba(194,24,91,.25))}
+.deva{font-family:var(--hand);font-weight:700;font-size:clamp(1.2rem,5vw,1.7rem);color:var(--maroon);margin-top:2px}
+.intro{max-width:520px;margin:12px auto 0;font-size:clamp(.95rem,3.7vw,1.08rem);line-height:1.65;opacity:.9}
+.divider{margin-top:14px;color:var(--marigold);letter-spacing:.45em;font-size:.85rem}
+
+.collage{position:relative;z-index:1;max-width:1180px;margin:0 auto;column-count:2;column-gap:var(--gap)}
+@media(min-width:720px){.collage{column-count:3;column-gap:22px}}
+@media(min-width:1080px){.collage{column-count:4}}
+
+.item{
+  position:relative;break-inside:avoid;margin:18px 0 var(--gap);padding:7px 7px 0;cursor:pointer;
+  background:#fffdf6;border:2px solid #e3b94a;border-radius:8px;
+  box-shadow:0 0 0 3px #fffdf6,0 0 0 4.5px #e3b94a88,0 12px 26px rgba(122,31,61,.22);
+  transform:translateY(26px) rotate(var(--r,0deg));opacity:0;
+  transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1),box-shadow .3s;
+}
+.item.show{opacity:1;transform:rotate(var(--r,0deg))}
+@media(hover:hover){.item.show:hover{transform:rotate(0) scale(1.03);z-index:3}}
+.item:active{transform:rotate(0) scale(.98)}
+.pin{position:absolute;top:-24px;left:50%;width:22px;height:31px;transform:translateX(-50%);z-index:2;filter:drop-shadow(0 2px 2px rgba(0,0,0,.2))}
+.item img{display:block;width:100%;height:auto;border-radius:4px;background:#ffe3ec}
+.cap{font-family:var(--hand);font-weight:700;text-align:center;color:var(--maroon);font-size:clamp(.9rem,3.6vw,1.08rem);line-height:1.35;padding:9px 6px 12px}
+.tag{position:absolute;top:14px;left:-6px;z-index:2;background:var(--maroon);color:#ffe9a8;font-family:var(--hand);font-size:.78rem;padding:2px 10px 3px;border-radius:0 12px 12px 0;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.like{position:absolute;right:12px;top:12px;width:36px;height:36px;border:0;border-radius:50%;background:rgba(255,255,255,.88);color:#cdb8c0;font-size:18px;cursor:pointer;z-index:2;display:grid;place-items:center;box-shadow:0 2px 8px rgba(0,0,0,.2);transition:color .2s}
+.like.on{color:var(--magenta);animation:pop .4s}
+@keyframes pop{50%{transform:scale(1.4)}}
+
+footer{position:relative;z-index:1;text-align:center;margin-top:40px;font-family:var(--script);font-size:clamp(1.8rem,7vw,2.6rem);color:var(--maroon)}
+footer small{display:block;font-family:var(--hand);font-size:.95rem;margin-top:6px;opacity:.75}
+
+.lb{position:fixed;inset:0;height:100dvh;background:rgba(58,10,32,.93);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:20;padding:20px 14px;backdrop-filter:blur(6px)}
+.lb.open{display:flex}
+.frame{background:#fffdf6;padding:10px 10px 0;border:3px solid #e3b94a;border-radius:10px;max-width:100%;box-shadow:0 20px 60px rgba(0,0,0,.55);animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:scale(.94)}}
+.frame img{display:block;max-width:100%;max-height:68vh;max-height:68dvh;border-radius:4px;margin:0 auto}
+.frame p{font-family:var(--hand);font-weight:700;color:var(--maroon);text-align:center;font-size:clamp(1.05rem,4.4vw,1.4rem);padding:12px 8px 14px;max-width:520px}
+.lb button{position:absolute;border:0;border-radius:50%;width:46px;height:46px;font-size:24px;background:rgba(255,255,255,.18);color:#fff;cursor:pointer}
+.lb button:active{background:rgba(255,255,255,.35)}
+.x{top:calc(14px + env(safe-area-inset-top));right:14px}
+.pv{left:8px;top:50%;transform:translateY(-50%)}.nx{right:8px;top:50%;transform:translateY(-50%)}
+.count{position:absolute;bottom:calc(14px + env(safe-area-inset-bottom));color:#ffe0a0;font-family:var(--hand)}
+
+.fx{position:fixed;top:-30px;pointer-events:none;z-index:0;animation:fall linear forwards}
+@keyframes fall{to{transform:translate(var(--dx,30px),112vh) rotate(360deg);opacity:.2}}
+.burst{position:fixed;pointer-events:none;z-index:40;color:var(--magenta);animation:rise 1.6s ease-out forwards}
+@keyframes rise{to{transform:translateY(-120px);opacity:0}}
+@media(prefers-reduced-motion:reduce){.fx,.hang{animation:none}.item{transition:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="jh" viewBox="0 0 24 34">
+    <circle cx="12" cy="3" r="2.5" fill="#d4a017"/>
+    <path d="M3 20 Q3 7 12 7 Q21 7 21 20 Z" fill="#f0c030" stroke="#a8770a" stroke-width="1"/>
+    <path d="M6 17 Q12 11 18 17" fill="none" stroke="#a8770a" stroke-width=".8"/>
+    <circle cx="12" cy="13" r="1.4" fill="#c2185b"/>
+    <circle cx="5" cy="24" r="2" fill="#f7dc7a"/><circle cx="12" cy="25" r="2" fill="#f7dc7a"/><circle cx="19" cy="24" r="2" fill="#f7dc7a"/>
+    <circle cx="8.5" cy="30" r="1.7" fill="#f7dc7a"/><circle cx="15.5" cy="30" r="1.7" fill="#f7dc7a"/>
+  </symbol>
+</svg>
+
+<div class="toran" id="toran" aria-hidden="true"></div>
+<header>
+  <div class="hello">Namaste, sunshine ✨</div>
+  <h1>Ashi</h1>
+  <div class="deva">आशी · Cutie Potatoie 🥔💖</div>
+  <p class="intro">Ek chhota sa tohfa, sirf tumhare liye. Kyunki tum jitni pyaari ho, tumhari yaadein bhi utni hi pyaari hain.</p>
+  <div class="divider">❀ ✦ ❀ ✦ ❀</div>
+</header>
+<main class="collage" id="collage"></main>
+<footer>Yunhi muskuraati raho, Ashi 🌸<small>Bahut saara pyaar, tumhare dost ki taraf se 💕</small></footer>
+
+<div class="lb" id="lb">
+  <button class="x" id="close" aria-label="Close">×</button>
+  <button class="pv" id="prev" aria-label="Previous">‹</button>
+  <button class="nx" id="next" aria-label="Next">›</button>
+  <div class="frame" id="frame"></div>
+  <div class="count" id="count"></div>
+</div>
+
+<script>
+const PHOTOS = [
+  {src:"images/ashi-01.jpg",w:1200,h:675,caption:"Hare rang ki saree, laal lipstick aur jhumkon ki jhankaar 💚"},
+  {src:"images/ashi-02.jpg",w:734,h:985,tag:"Bachpan 🧸",caption:"Cutie potatoie, since day one 🥔"},
+  {src:"images/ashi-03.jpg",w:675,h:1200,caption:"Kaali saree, sunehra dil. Full queen vibes 👑"},
+  {src:"images/ashi-04.jpg",w:1200,h:793,tag:"Bachpan ☔",caption:"Baarish, chhatri aur yeh pyaari si muskaan 💕"},
+  {src:"images/ashi-05.jpg",w:1200,h:675,caption:"Dhoop bhi tumse nazar nahi hata paayi ☀️"},
+  {src:"images/ashi-06.jpg",w:1056,h:1200,tag:"Bachpan 🌼",caption:"Sharmeeli si smile, sabse pyaari ✨"},
+  {src:"images/ashi-07.jpg",w:462,h:820,caption:"Ek wink aur dil gaya! 😉💚"},
+  {src:"images/ashi-08.jpg",w:1200,h:675,caption:"Jhumka halka sa hila, aur dil humara 💫"},
+  {src:"images/ashi-09.jpg",w:675,h:1200,caption:"Gulaabi sapno wali shehzaadi 🌸"},
+  {src:"images/ashi-10.jpg",w:739,h:980,tag:"Bachpan 🌈",caption:"Chhoti si adventurer, bada sa dil 💖"},
+  {src:"images/ashi-11.jpg",w:1200,h:675,caption:"Itni cute pout? Yeh toh illegal hona chahiye 😘"},
+  {src:"images/ashi-12.jpg",w:725,h:550,tag:"Bachpan 😎",caption:"Cool shades, aur usse bhi cool attitude"},
+  {src:"images/ashi-13.jpg",w:1200,h:675,caption:"Lehraate baal, aur woh dil churane wali nazar 🖤"},
+  {src:"images/ashi-14.jpg",w:820,h:462,caption:"Yeh muskaan dekh ke dil ko sukoon mil jaata hai 💖"}
+];
+
+const $ = id => document.getElementById(id);
+const NS = "http://www.w3.org/2000/svg";
+function jh(cls){
+  const s = document.createElementNS(NS,"svg"); if(cls) s.setAttribute("class",cls);
+  const u = document.createElementNS(NS,"use"); u.setAttribute("href","#jh");
+  s.appendChild(u); return s;
+}
+
+/* Toran: hanging jhumkas and marigolds */
+function buildToran(){
+  const el = $("toran"); el.innerHTML = "";
+  const n = Math.max(5, Math.min(15, Math.round(innerWidth/78)));
+  for(let i=0;i<n;i++){
+    const h = document.createElement("div"); h.className = "hang";
+    h.style.setProperty("--len",(14+(i%3)*14)+"px");
+    h.style.setProperty("--d",(-i*0.45)+"s");
+    const l = document.createElement("i"); h.appendChild(l);
+    if(i%2===0) h.appendChild(jh()); else { const m=document.createElement("div"); m.className="mari"; h.appendChild(m); }
+    el.appendChild(h);
+  }
+}
+buildToran();
+let rt; addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(buildToran,200)});
+
+/* Cards */
+const tilts = [-1.6,1.3,-.9,1.7,-1.4,.9];
+const grid = $("collage");
+PHOTOS.forEach((p,i)=>{
+  const fig = document.createElement("figure");
+  fig.className = "item";
+  fig.style.setProperty("--r",tilts[i%tilts.length]+"deg");
+  fig.appendChild(jh("pin"));
+  if(p.tag){ const t=document.createElement("span"); t.className="tag"; t.textContent=p.tag; fig.appendChild(t); }
+  const im = new Image();
+  im.src = p.src; im.width = p.w; im.height = p.h; im.alt = p.caption; im.decoding = "async";
+  if(i>1) im.loading = "lazy";
+  fig.appendChild(im);
+  const c = document.createElement("figcaption"); c.className="cap"; c.textContent=p.caption; fig.appendChild(c);
+  const b = document.createElement("button");
+  b.className="like"; b.textContent="♥"; b.setAttribute("aria-label","Love this photo");
+  b.onclick = e => { e.stopPropagation(); b.classList.toggle("on"); if(b.classList.contains("on")) burst(e.clientX,e.clientY); };
+  fig.appendChild(b);
+  fig.onclick = () => openLb(i);
+  grid.appendChild(fig);
+});
+
+const io = new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add("show");io.unobserve(e.target)}
+}),{threshold:.05});
+document.querySelectorAll(".item").forEach((el,i)=>{el.style.transitionDelay=(i%4)*90+"ms";io.observe(el)});
+
+/* Lightbox */
+let cur = 0;
+function openLb(i){
+  cur = (i+PHOTOS.length)%PHOTOS.length;
+  const p = PHOTOS[cur], f = $("frame");
+  f.innerHTML = ""; f.style.animation="none"; void f.offsetWidth; f.style.animation="";
+  const im = new Image(); im.src = p.src; im.alt = p.caption; f.appendChild(im);
+  const t = document.createElement("p"); t.textContent = p.caption; f.appendChild(t);
+  $("count").textContent = (cur+1)+" / "+PHOTOS.length;
+  $("lb").classList.add("open"); document.body.style.overflow="hidden";
+}
+function closeLb(){ $("lb").classList.remove("open"); document.body.style.overflow=""; }
+$("close").onclick = closeLb;
+$("prev").onclick = e=>{e.stopPropagation();openLb(cur-1)};
+$("next").onclick = e=>{e.stopPropagation();openLb(cur+1)};
+$("lb").addEventListener("click",e=>{ if(e.target.id==="lb") closeLb(); });
+document.addEventListener("keydown",e=>{
+  if(!$("lb").classList.contains("open")) return;
+  if(e.key==="Escape") closeLb();
+  if(e.key==="ArrowLeft") openLb(cur-1);
+  if(e.key==="ArrowRight") openLb(cur+1);
+});
+let sx=0;
+$("lb").addEventListener("touchstart",e=>sx=e.touches[0].clientX,{passive:true});
+$("lb").addEventListener("touchend",e=>{const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>50) openLb(cur+(dx<0?1:-1));},{passive:true});
+
+/* Heart burst on like */
+function burst(x,y){
+  for(let i=0;i<6;i++){
+    const h=document.createElement("span"); h.className="burst"; h.textContent="♥";
+    h.style.left=(x-8+Math.random()*50-25)+"px"; h.style.top=(y-8)+"px";
+    h.style.fontSize=(12+Math.random()*12)+"px"; h.style.animationDelay=(i*60)+"ms";
+    document.body.appendChild(h); setTimeout(()=>h.remove(),2000);
+  }
+}
+
+/* Phool barsaat: falling petals */
+const petals = ["✿","❀","❁","♥"], cols = ["#f4a300","#e91e63","#ff7aa8","#d4a017"];
+setInterval(()=>{
+  if(document.hidden) return;
+  const p=document.createElement("span"); p.className="fx";
+  p.textContent=petals[Math.floor(Math.random()*petals.length)];
+  p.style.left=Math.random()*100+"vw";
+  p.style.fontSize=(12+Math.random()*14)+"px";
+  p.style.color=cols[Math.floor(Math.random()*cols.length)];
+  p.style.opacity=".6";
+  p.style.setProperty("--dx",(Math.random()*80-40)+"px");
+  const d=9+Math.random()*6; p.style.animationDuration=d+"s";
+  document.body.appendChild(p); setTimeout(()=>p.remove(),d*1000+200);
+},1500);
+</script>
+</body>
+</html>

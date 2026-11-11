@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffd9e6">
+<title>Ashi 🥔💖 Tumhare liye</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Gochi+Hand&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#4a2b4f;--pink:#ffb3cd;--mint:#b8ecd4;--lilac:#d4c4ff;--butter:#ffe8a3;--peach:#ffc9a8;--bg:#fff3f7;--gap:18px;
+  --head:'Fredoka','Trebuchet MS',system-ui,sans-serif;--hand:'Gochi Hand','Comic Sans MS',cursive}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:var(--head);color:var(--ink);min-height:100vh;overflow-x:hidden;
+  background:radial-gradient(circle at 12% 8%,#ffd6e6 0,transparent 32%),radial-gradient(circle at 88% 18%,#e3d9ff 0,transparent 34%),radial-gradient(circle at 20% 70%,#d6f5e6 0,transparent 30%),radial-gradient(circle at 85% 88%,#fff0bd 0,transparent 32%),var(--bg) fixed;
+  padding:0 max(14px,env(safe-area-inset-right)) calc(110px + env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left))}
+body.lock{overflow:hidden;height:100vh}
+.bgfx{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.cloud{position:absolute;width:120px;height:38px;background:#fff;border-radius:40px;opacity:.75;animation:drift linear infinite}
+.cloud::before,.cloud::after{content:"";position:absolute;background:#fff;border-radius:50%}
+.cloud::before{width:50px;height:50px;left:18px;top:-24px}.cloud::after{width:38px;height:38px;left:60px;top:-16px}
+@keyframes drift{from{transform:translateX(-160px)}to{transform:translateX(110vw)}}
+.star{position:absolute;animation:tw 2.6s ease-in-out infinite}
+@keyframes tw{50%{opacity:.15;transform:scale(.6) rotate(20deg)}}
+header,section,footer,.guide{position:relative;z-index:1}
+
+/* progress bar */
+.bar{position:sticky;top:0;z-index:40;margin:0 -14px;padding:calc(8px + env(safe-area-inset-top)) 14px 8px;background:rgba(255,243,247,.92);backdrop-filter:blur(8px);border-bottom:3px solid var(--ink);display:none;text-align:center;font-weight:500;font-size:.95rem}
+body.ready .bar{display:block}
+.bar b{font-size:1.1rem}
+.track{height:10px;margin-top:6px;border:2px solid var(--ink);border-radius:99px;background:#fff;overflow:hidden}
+.fill{height:100%;width:0;background:repeating-linear-gradient(45deg,var(--pink) 0 10px,#ff8fb1 10px 20px);transition:width .6s}
+
+header{text-align:center;padding:22px 6px 6px}
+.mascot{width:clamp(96px,26vw,130px);height:auto;animation:hop 2.4s ease-in-out infinite}
+@keyframes hop{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}
+.eye{transform-box:fill-box;transform-origin:center;animation:blink 4.2s infinite}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+h1{display:flex;justify-content:center;gap:2px;font-weight:600;font-size:clamp(4.2rem,22vw,7.4rem);line-height:1;margin-top:4px}
+h1 span{display:inline-block;-webkit-text-stroke:3px var(--ink);paint-order:stroke fill;text-shadow:4px 5px 0 var(--ink);animation:bob 2.2s ease-in-out infinite;animation-delay:var(--d)}
+@keyframes bob{50%{transform:translateY(-8px) rotate(var(--rr))}}
+.ribbon{display:inline-block;margin-top:14px;background:var(--butter);border:3px solid var(--ink);border-radius:999px;padding:6px 20px;font-weight:600;font-size:clamp(1rem,4.6vw,1.35rem);box-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
+
+/* guide */
+.guide{max-width:520px;margin:22px auto 0;background:#fff;border:3px solid var(--ink);border-radius:24px;padding:16px 16px 18px;box-shadow:6px 6px 0 var(--lilac);text-align:left}
+.guide h3{text-align:center;font-size:1.2rem;margin-bottom:10px}
+.guide ol{list-style:none;display:grid;gap:8px;font-size:1rem;line-height:1.35}
+.guide li{display:flex;gap:10px;align-items:flex-start;background:var(--bg);border-radius:14px;padding:8px 10px}
+.guide li b{flex:none;width:26px;height:26px;border-radius:50%;background:var(--pink);border:2px solid var(--ink);display:grid;place-items:center;font-size:.85rem}
+.btn{display:block;margin:14px auto 0;font-family:var(--head);font-weight:600;font-size:1.1rem;color:var(--ink);background:var(--pink);border:3px solid var(--ink);border-radius:999px;padding:13px 26px;cursor:pointer;box-shadow:4px 5px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.btn:active{transform:translate(3px,4px);box-shadow:1px 1px 0 var(--ink)}
+.btn:disabled{opacity:.55;cursor:default}
+.pulse{animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.06)}}
+
+.sec{display:flex;align-items:center;gap:12px;max-width:1180px;margin:38px auto 26px}
+.sec::before,.sec::after{content:"";flex:1;border-top:3px dotted var(--ink);opacity:.3}
+.sec span{background:var(--c);border:3px solid var(--ink);border-radius:999px;padding:6px 18px;font-weight:600;font-size:clamp(1rem,4.6vw,1.4rem);box-shadow:4px 4px 0 var(--ink);white-space:nowrap}
+
+.collage{max-width:1180px;margin:0 auto;column-count:2;column-gap:var(--gap)}
+@media(min-width:720px){.collage{column-count:3;column-gap:26px}}
+@media(min-width:1080px){.collage{column-count:4}}
+.card{position:relative;break-inside:avoid;margin:0 0 24px;background:#fff;border:3px solid var(--ink);border-radius:22px;padding:8px;cursor:pointer;box-shadow:5px 5px 0 var(--c);opacity:0;transform:translateY(30px) scale(.88) rotate(var(--r));transition:opacity .6s ease,transform .7s cubic-bezier(.34,1.56,.64,1),box-shadow .2s}
+.card.show{opacity:1;transform:rotate(var(--r))}
+@media(hover:hover){.card.show:hover{transform:rotate(0) translateY(-6px);box-shadow:9px 10px 0 var(--c)}}
+.card img{display:block;width:100%;height:auto;border-radius:15px;border:2px solid var(--ink);background:#ffe3ec}
+.bubble{margin-top:10px;background:var(--c);border:2px solid var(--ink);border-radius:16px;padding:7px 10px 8px;text-align:center;font-family:var(--hand);font-size:clamp(1rem,3.9vw,1.15rem);line-height:1.3}
+.bubble.teaser{background:#fff;border-style:dashed;animation:pulse 1.8s ease-in-out infinite}
+.stk{position:absolute;top:-16px;right:-8px;font-size:28px;z-index:2;transform:rotate(14deg);animation:wob 2.6s ease-in-out infinite;animation-delay:var(--sd)}
+@keyframes wob{50%{transform:rotate(-8deg) scale(1.12)}}
+
+/* finale lock */
+.finale{text-align:center;margin:46px auto 0;max-width:520px;background:#fff;border:3px solid var(--ink);border-radius:26px;padding:22px 18px;box-shadow:6px 6px 0 var(--butter)}
+.finale .big{font-size:46px}
+.finale p{font-family:var(--hand);font-size:clamp(1.2rem,5vw,1.5rem);line-height:1.4;margin-top:6px}
+
+/* music */
+.music{position:fixed;z-index:50;right:max(14px,env(safe-area-inset-right));bottom:calc(16px + env(safe-area-inset-bottom));display:none;align-items:center;gap:10px;background:var(--butter);border:3px solid var(--ink);border-radius:999px;padding:8px 16px 8px 10px;box-shadow:4px 4px 0 var(--ink);cursor:pointer;font-weight:600}
+body.ready .music{display:flex}
+.music .ic{width:34px;height:34px;border-radius:50%;background:#fff;border:2px solid var(--ink);display:grid;place-items:center;font-size:15px}
+.eq{display:flex;gap:3px;align-items:flex-end;height:18px}.eq i{width:4px;height:5px;background:var(--ink);border-radius:2px}
+.music.on .eq i{animation:eq .7s ease-in-out infinite alternate}
+.music.on .eq i:nth-child(2){animation-delay:.2s}.music.on .eq i:nth-child(3){animation-delay:.4s}.music.on .eq i:nth-child(4){animation-delay:.1s}
+@keyframes eq{to{height:18px}}
+
+/* gate + letter */
+.gate{position:fixed;inset:0;z-index:100;height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;background:radial-gradient(circle at 20% 15%,#ffd6e6,transparent 45%),radial-gradient(circle at 85% 85%,#e3d9ff,transparent 45%),var(--bg);transition:opacity .7s,transform .7s}
+.gate.gone{opacity:0;transform:scale(1.15);pointer-events:none}
+.gate h2{font-weight:600;font-size:clamp(1.6rem,7vw,2.4rem);margin-top:10px}
+.gate p{font-family:var(--hand);font-size:clamp(1.2rem,5vw,1.5rem);margin-top:8px}
+.gift{font-size:64px;animation:hop 1.6s ease-in-out infinite;margin-top:10px}
+.hint{margin-top:16px;font-size:1rem;animation:nudge 1.2s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateY(6px)}}
+.letter{width:100%;max-width:440px;background:#fff;border:3px solid var(--ink);border-radius:26px;padding:26px 20px;box-shadow:7px 7px 0 var(--pink);min-height:210px;display:flex;flex-direction:column;justify-content:center}
+.letter .env{font-size:40px}
+#ltxt{font-family:var(--hand);font-size:clamp(1.35rem,5.8vw,1.7rem);line-height:1.45;white-space:pre-line;margin-top:8px}
+.dots{display:flex;gap:8px;justify-content:center;margin-top:18px}.dots i{width:12px;height:12px;border-radius:50%;border:2px solid var(--ink);background:#fff}.dots i.on{background:var(--pink)}
+#st2{display:none;flex-direction:column;align-items:center}
+
+/* lightbox */
+.lb{position:fixed;inset:0;height:100dvh;background:rgba(74,43,79,.94);display:none;align-items:center;justify-content:flex-start;flex-direction:column;z-index:80;padding:calc(62px + env(safe-area-inset-top)) 14px calc(14px + env(safe-area-inset-bottom));overflow-y:auto;backdrop-filter:blur(6px)}
+.lb.open{display:flex}
+.frame{position:relative;background:#fff;border:3px solid var(--ink);border-radius:24px;padding:10px;width:100%;max-width:520px;box-shadow:8px 8px 0 var(--pink);animation:in .4s cubic-bezier(.34,1.56,.64,1);text-align:center}
+@keyframes in{from{opacity:0;transform:scale(.92)}}
+.frame img{display:block;max-width:100%;max-height:calc(100dvh - 400px);min-height:150px;width:auto;margin:0 auto;border-radius:16px;border:2px solid var(--ink);object-fit:contain}
+.frame .bubble{margin-top:12px;font-size:clamp(1.2rem,5vw,1.5rem);line-height:1.35;padding:10px 12px}
+.ps{font-size:.88rem;opacity:.75;margin-top:8px}
+.bigheart{position:absolute;left:50%;top:38%;font-size:90px;transform:translate(-50%,-50%) scale(0);pointer-events:none;animation:bh .8s ease-out}
+@keyframes bh{30%{transform:translate(-50%,-50%) scale(1.2);opacity:1}to{transform:translate(-50%,-90%) scale(1);opacity:0}}
+.cnt{margin-top:10px;color:#ffe8f0;font-family:var(--hand);font-size:1.15rem}
+.acts{display:flex;gap:8px;margin-top:10px;width:100%;max-width:520px}
+.acts button{flex:1;font:600 1rem var(--head);color:var(--ink);background:#fff;border:3px solid var(--ink);border-radius:999px;padding:12px 4px;box-shadow:3px 4px 0 var(--ink);cursor:pointer}
+.acts button:active{transform:translate(2px,3px);box-shadow:1px 1px 0 var(--ink)}
+.acts #next{background:var(--pink)}.acts #like.on{background:#ffd0e0}
+.acts button:disabled{opacity:.4}
+.x{position:absolute;top:calc(12px + env(safe-area-inset-top));right:14px;font:600 1rem var(--head);color:var(--ink);background:var(--butter);border:3px solid var(--ink);border-radius:999px;padding:8px 16px;box-shadow:3px 3px 0 var(--ink);cursor:pointer}
+.swipe{position:absolute;top:calc(18px + env(safe-area-inset-top));left:14px;color:#ffe8f0;font-size:.85rem;max-width:55%}
+
+.fin{position:fixed;inset:0;z-index:95;background:rgba(74,43,79,.94);display:none;align-items:center;justify-content:center;padding:18px;overflow-y:auto}
+.fin.open{display:flex}
+.fin .letter{animation:in .5s cubic-bezier(.34,1.56,.64,1)}
+.fin #ftxt{font-family:var(--hand);font-size:clamp(1.2rem,5vw,1.45rem);line-height:1.5;white-space:pre-line;margin-top:8px}
+.toast{position:fixed;left:50%;top:calc(76px + env(safe-area-inset-top));transform:translateX(-50%) translateY(-20px);z-index:70;background:var(--butter);border:3px solid var(--ink);border-radius:18px;padding:10px 16px;box-shadow:4px 4px 0 var(--ink);font-weight:600;text-align:center;width:min(92vw,420px);opacity:0;pointer-events:none;transition:.4s}
+.toast.on{opacity:1;transform:translateX(-50%)}
+
+.fx{position:fixed;top:-30px;pointer-events:none;z-index:60;animation:fall linear forwards}
+@keyframes fall{to{transform:translate(var(--dx,30px),112vh) rotate(360deg);opacity:.3}}
+.hrt{position:fixed;bottom:-30px;pointer-events:none;z-index:0;animation:up linear forwards}
+@keyframes up{to{transform:translateY(-112vh) rotate(30deg);opacity:0}}
+.burst{position:fixed;pointer-events:none;z-index:200;animation:rise 1.2s ease-out forwards}
+@keyframes rise{to{transform:translateY(-70px) scale(.6);opacity:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none !important}.card{transition:none}}
+</style>
+</head>
+<body class="lock">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="jh" viewBox="0 0 24 34"><circle cx="12" cy="3" r="2.5" fill="#d4a017"/><path d="M3 20 Q3 7 12 7 Q21 7 21 20 Z" fill="#f0c030" stroke="#a8770a" stroke-width="1"/><circle cx="12" cy="13" r="1.4" fill="#e91e63"/><circle cx="5" cy="24" r="2" fill="#f7dc7a"/><circle cx="12" cy="25" r="2" fill="#f7dc7a"/><circle cx="19" cy="24" r="2" fill="#f7dc7a"/><circle cx="8.5" cy="30" r="1.7" fill="#f7dc7a"/><circle cx="15.5" cy="30" r="1.7" fill="#f7dc7a"/></symbol>
+  <symbol id="potato" viewBox="0 0 120 110">
+    <ellipse cx="60" cy="64" rx="44" ry="38" fill="#e8bb86" stroke="#4a2b4f" stroke-width="3.5"/>
+    <circle cx="38" cy="46" r="3" fill="#cf9f66"/><circle cx="82" cy="50" r="2.6" fill="#cf9f66"/><circle cx="70" cy="40" r="2" fill="#cf9f66"/><circle cx="50" cy="90" r="2.4" fill="#cf9f66"/>
+    <ellipse class="eye" cx="45" cy="60" rx="4.5" ry="5.5" fill="#4a2b4f"/><ellipse class="eye" cx="75" cy="60" rx="4.5" ry="5.5" fill="#4a2b4f"/>
+    <circle cx="47" cy="58" r="1.5" fill="#fff"/><circle cx="77" cy="58" r="1.5" fill="#fff"/>
+    <circle cx="34" cy="72" r="7" fill="#ff8fb1" opacity=".75"/><circle cx="86" cy="72" r="7" fill="#ff8fb1" opacity=".75"/>
+    <path d="M53 71 Q60 79 67 71" fill="none" stroke="#4a2b4f" stroke-width="3" stroke-linecap="round"/>
+    <path d="M30 30 L46 36 L34 46 Z" fill="#ff8fb1" stroke="#4a2b4f" stroke-width="2.5" stroke-linejoin="round"/><path d="M62 30 L46 36 L58 46 Z" fill="#ff8fb1" stroke="#4a2b4f" stroke-width="2.5" stroke-linejoin="round"/>
+    <circle cx="46" cy="37" r="5" fill="#ffd0e0" stroke="#4a2b4f" stroke-width="2.5"/>
+    <use href="#jh" x="6" y="64" width="14" height="20"/><use href="#jh" x="100" y="64" width="14" height="20"/>
+  </symbol>
+</svg>
+<div class="bgfx" id="bgfx" aria-hidden="true"></div>
+
+<!-- Intro -->
+<div class="gate" id="gate">
+  <div id="st1" style="display:flex;flex-direction:column;align-items:center">
+    <svg class="mascot" viewBox="0 0 120 110"><use href="#potato"/></svg>
+    <div class="gift">🎁</div>
+    <h2>Ashi, tumhare liye surprise hai!</h2>
+    <p>Gaana on hoga, volume thoda badha lena 🎧💖</p>
+    <button class="btn pulse" id="open" disabled>Tayyar ho raha hai… 💖</button>
+    <div class="hint" id="hint" style="display:none">👆 Yahan tap karo</div>
+    <button class="btn" id="mute" style="background:#fff;font-size:.9rem;padding:8px 16px;box-shadow:2px 3px 0 var(--ink)" disabled>🔇 Bina gaane ke dekho</button>
+  </div>
+  <div id="st2">
+    <div class="letter"><div class="env">💌</div><div id="ltxt"></div><div class="dots" id="ldots"></div></div>
+    <button class="btn pulse" id="lnext">Aage ➜</button>
+    <div class="hint">👆 Har baar "Aage" dabate jao</div>
+  </div>
+</div>
+
+<div class="bar" id="bar">💌 Messages padhe: <b id="rc">0</b> / <b id="rt">0</b><div class="track"><div class="fill" id="fill"></div></div></div>
+
+<header>
+  <svg class="mascot" viewBox="0 0 120 110" aria-hidden="true"><use href="#potato"/></svg>
+  <h1 id="title" aria-label="Ashi"></h1>
+  <div class="ribbon">Cutie Potatoie 🥔💖</div>
+</header>
+
+<div class="guide">
+  <h3>Kaise dekhna hai? 👇</h3>
+  <ol>
+    <li><b>1</b><span>📸 Kisi bhi photo pe <u>tap</u> karo</span></li>
+    <li><b>2</b><span>💌 Uske andar tumhare liye ek message hai, usse padho</span></li>
+    <li><b>3</b><span>➜ <u>"Aage"</u> dabao ya swipe karo, aur ♥ <u>"Pasand aaya"</u> dabana mat bhoolna</span></li>
+    <li><b>4</b><span>🔓 Sab messages padhoge toh ek <u>surprise</u> khulega!</span></li>
+  </ol>
+  <button class="btn pulse" id="story">▶ Story mode: sab messages padho</button>
+</div>
+
+<main id="secs"></main>
+
+<footer class="finale">
+  <div class="big" id="lockic">🔒</div>
+  <p id="locktxt">Ek surprise tumhara wait kar raha hai!</p>
+  <button class="btn" id="finbtn" disabled>🎁 Surprise kholo</button>
+</footer>
+
+<div class="music" id="music" role="button" aria-label="Gaana on ya off karo"><span class="ic">🎵</span><span class="eq"><i></i><i></i><i></i><i></i></span><span id="lbl">Gaana</span></div>
+<div class="toast" id="toast"></div>
+
+<div class="lb" id="lb">
+  <button class="x" id="close">✕ Band karo</button>
+  <div class="swipe">👈 swipe karke bhi photo badal sakti ho 👉</div>
+  <div class="frame" id="frame"><img id="lbimg" alt=""><div class="bubble" id="lbmsg"></div><div class="ps" id="lbps"></div></div>
+  <div class="cnt" id="lbcnt"></div>
+  <div class="acts"><button id="prev">⬅ Peeche</button><button id="like">♥ Pasand aaya</button><button id="next">Aage ➜</button></div>
+</div>
+
+<div class="fin" id="fin">
+  <div style="width:100%;max-width:440px;text-align:center">
+    <div class="letter"><div class="env">💖</div><div id="ftxt"></div></div>
+    <button class="btn" id="again">🔁 Dobara dekho</button>
+    <button class="btn" id="fclose" style="background:var(--butter)">✕ Band karo</button>
+  </div>
+</div>
+
+<script>
+/* ============ EDIT HERE ============
+   Naya photo add karna hai? Bas "images" folder mein daal do. Page khud utha lega.
+   Uska message neeche POOL se auto aa jayega. Chaaho toh META mein apna message likh do.
+   Section: kid / desi / sun / specs / more   (file ka naam "bachpan..." se shuru ho toh kid section)  */
+const SONG_FILE="";  // optional: "music/song.mp3"
+const META={
+ "ashi-02.jpg":["kid","Cutie potatoie, since day one! Itni pyaari bachchi ko dekh ke dil pighal gaya 🥔💕"],
+ "ashi-04.jpg":["kid","Baarish, chhatri aur yeh muskaan... ek hi photo mein poora mausam pyaara ho gaya ☔💗"],
+ "ashi-06.jpg":["kid","Yeh sharmeeli si smile aaj bhi utni hi jaan leva hai ✨"],
+ "ashi-10.jpg":["kid","Chhoti si adventurer, par dil itna bada! Tab bhi star thi, ab bhi ho 🌈"],
+ "ashi-12.jpg":["kid","Cool shades wali little queen. Attitude tab bhi top class tha 😎💖"],
+ "ashi-31.jpg":["desi","Yeh jhumka, yeh bindi, yeh aankhein... bas, dil gaya! Sabse pyaari 🤍✨"],
+ "ashi-01.jpg":["desi","Hare rang ki saree, laal lipstick aur jhumkon ki jhankaar... kisi ki bhi nazar ruk jaaye 💚"],
+ "ashi-03.jpg":["desi","Kaali saree, sunehra dil. Full queen vibes, jhuk ke salaam 👑"],
+ "ashi-16.jpg":["desi","Laal rang aur chandi ka haar... tum toh poori shehzaadi lag rahi ho 👸"],
+ "ashi-07.jpg":["desi","Ek wink aur dil gaya! Hare rang mein tum kamaal lagti ho 😉💚"],
+ "ashi-15.jpg":["desi","Aankhon mein jaadu, jhumkon mein jhankaar... poori kahani yahin hai ✨"],
+ "ashi-08.jpg":["desi","Jhumka halka sa hila, aur dil humara chala gaya 💫"],
+ "ashi-17.jpg":["desi","Is nazar ne kitne dil churaye hain, sach batao? 😌💘"],
+ "ashi-19.jpg":["desi","Chhoti si bindi, bada sa jaadu. Desi beauty ka matlab tum ho 🔴✨"],
+ "ashi-13.jpg":["desi","Lehraate baal aur woh nazar... seedha dil pe lagti hai 🖤"],
+ "ashi-14.jpg":["desi","Yeh muskaan dekh ke din ban jaata hai, sach mein 💖"],
+ "ashi-05.jpg":["sun","Dhoop bhi tumse nazar nahi hata paayi ☀️"],
+ "ashi-22.jpg":["sun","Ek ungli gaal pe, aur poori duniya fida! Cutest pose ever ☝️💕"],
+ "ashi-11.jpg":["sun","Itni cute pout? Yeh toh illegal hona chahiye 😘"],
+ "ashi-23.jpg":["sun","Yeh softness, yeh glow... jaise koi pyaara sa sapna ho 🌷"],
+ "ashi-24.jpg":["sun","Yahi hai woh muskaan jo kisi ka bhi bad mood theek kar de 😊💖"],
+ "ashi-20.jpg":["sun","Curly baal, cute pout aur Hello Kitty vibes... full kawaii mode 🎀"],
+ "ashi-09.jpg":["sun","Gulaabi sapno wali shehzaadi, bilkul filmy 🌸"],
+ "ashi-26.jpg":["sun","Cutie with attitude, zubaan nikali aur dil le gayi 😜💕"],
+ "ashi-21.jpg":["sun","Jab tum aise dekhti ho na, time ruk sa jaata hai 🕰️💗"],
+ "ashi-25.jpg":["sun","Hawa mein udte baal, aur dil udta hua tumhari taraf 🦋"],
+ "ashi-30.jpg":["sun","Mirror ko bhi pyaar ho gaya tumse, baal dekho kaise lehra rahe! 🪞💫"],
+ "ashi-18.jpg":["specs","Specs ke peeche chhupi woh pyaari nazar, bilkul book-cute 🤓🧡"],
+ "ashi-27.jpg":["specs","Dark vibes, cute specs aur ek ungli hothon pe... mysterious queen 🖤"],
+ "ashi-28.jpg":["specs","Soch mein dooba chehra bhi itna pyaara kaise ho sakta hai? 💭💗"],
+ "ashi-29.jpg":["specs","Specs wali Ashi = sabse pyaari! Ghoor ke dekhna padega baar baar 👓💘"]
+};
+const POOL=["Is photo mein bhi tum kamaal lag rahi ho, bilkul filmy! 🎬💖","Tumhari muskaan meri favourite cheez hai ☀️","Jaise chaand ko bhi jalan ho jaye, itni pyaari ho 🌙","Cute, pyaari aur thodi si naughty, perfect combo 😜💕","Yeh nazar toh seedha dil mein utar gayi 💘","Camera bhi sochta hoga: itni cute kaise? 📸💗","Tum jahan ho wahan rang bhar jaate hain 🌈","Ek photo aur dil phir se pighal gaya 🍫💖"];
+const PS=["P.S. Tum jaisi dost milna kismat ki baat hai 🍀","P.S. Aaj bhi muskuraao, tum pe bahut suit karta hai 😊","P.S. Tum jitni pyaari ho, utni hi achhi insaan bhi ho 💕","P.S. Yeh message padh ke smile aayi? Toh mission successful! 🎯","P.S. Tum special ho, yeh kabhi mat bhoolna ✨","P.S. Tumhari hansi duniya ka best music hai 🎶","P.S. Agli photo mein aur bhi pyaari lagogi, shart lagao! 😌","P.S. Yeh sab dil se bola hai, ekdum sach 💌","P.S. Potato ho, par poori galaxy ki sabse cute potato 🥔🌌","P.S. Tum hans do toh sab theek lagta hai 🌷"];
+const LETTER=["Hey Ashi 🥔💖\nYeh poora page maine sirf tumhare liye banaya hai.","Kyunki tum woh insaan ho jise dekh ke sabka din ban jaata hai ☀️","Tumhari muskaan, tumhare jhumke aur tumhari cute si potato wali harkatein... sab kuch bahut pyaara hai 💕","Ab har photo ke andar tumhare liye ek message chhupa hai 💌\nSab padhna, ek bhi miss mat karna, okay? 😌"];
+const FINAL="Ashi, agar kabhi lage ki tum kuch kam ho, toh yeh page kholna aur yaad karna... tum sach mein bahut pyaari ho, dikhne mein bhi aur dil se bhi 💖\n\nHamesha aise hi hasti raho, chamakti raho, aur jhumke pehen ke sabka dil jeetti raho 🌷\n\nHamesha tumhara dost 🥔";
+const SECS=[["kid","🧸 Chhoti si Ashi","var(--mint)"],["desi","👑 Desi Queen Ashi","var(--pink)"],["sun","☀️ Sunshine Ashi","var(--butter)"],["specs","👓 Specs wali Ashi","var(--lilac)"],["more","💖 Aur bhi Ashi","var(--peach)"]];
+/* =================================== */
+
+const $=id=>document.getElementById(id);
+const hash=s=>[...s].reduce((a,c)=>(a*31+c.charCodeAt(0))>>>0,7);
+const COLS=["var(--pink)","var(--mint)","var(--lilac)","var(--butter)","var(--peach)"];
+const STK=["⭐","💗","🌸","✨","🍓","🦋","🌈","🧸","🍭","🎀"], TILT=[-1.8,1.4,-1,1.8,-1.5,1.1];
+let PH=[],ALL=[],cur=0,mt=null,celebrated=false;
+const ld=k=>{try{return new Set(JSON.parse(localStorage.getItem(k)||"[]"))}catch(e){return new Set}};
+const sv=(k,s)=>{try{localStorage.setItem(k,JSON.stringify([...s]))}catch(e){}};
+const READ=ld("ashi_read"), LIKED=ld("ashi_like");
+
+/* title + background */
+["A","s","h","i"].forEach((ch,i)=>{const s=document.createElement("span");s.textContent=ch;s.style.color=["var(--pink)","var(--lilac)","var(--mint)","var(--butter)"][i];s.style.setProperty("--d",(i*.25)+"s");s.style.setProperty("--rr",(i%2?4:-4)+"deg");$("title").appendChild(s)});
+const bg=$("bgfx");
+[[8,70,48],[30,90,66],[62,60,40]].forEach(([t,sp,d],i)=>{const c=document.createElement("div");c.className="cloud";c.style.top=t+"vh";c.style.animationDuration=sp+"s";c.style.animationDelay=(-d)+"s";c.style.transform="scale("+(.7+i*.2)+")";bg.appendChild(c)});
+for(let i=0;i<16;i++){const s=document.createElement("span");s.className="star";s.textContent=["✦","✧","♡"][i%3];s.style.left=Math.random()*100+"%";s.style.top=Math.random()*100+"%";s.style.fontSize=(10+Math.random()*14)+"px";s.style.color=["#ffb3cd","#c9b6ff","#ffd36b","#8fdcc0"][i%4];s.style.animationDelay=Math.random()*3+"s";bg.appendChild(s)}
+
+/* auto-discover photos in /images */
+async function discover(){
+  try{
+    const c=sessionStorage.getItem("ashi_list"); if(c) return JSON.parse(c);
+    const h=location.hostname;
+    if(h.endsWith("github.io")){
+      const user=h.split(".")[0], p=location.pathname.split("/").filter(Boolean);
+      const repo=(p[0]&&!p[0].includes("."))?p[0]:h;
+      const r=await fetch(`https://api.github.com/repos/${user}/${repo}/contents/images`);
+      if(r.ok){const j=await r.json();const n=j.filter(f=>/\.(jpe?g|png|webp|gif|avif)$/i.test(f.name)).map(f=>f.name);if(n.length){sessionStorage.setItem("ashi_list",JSON.stringify(n));return n}}
+    }
+  }catch(e){}
+  try{const r=await fetch("photos.json",{cache:"no-cache"});if(r.ok){const n=await r.json();if(n.length)return n}}catch(e){}
+  return Object.keys(META);
+}
+const DIM={};
+const load=p=>new Promise(res=>{const i=new Image();i.onload=()=>{DIM[p.name]=[i.naturalWidth,i.naturalHeight];res()};i.onerror=()=>res();i.src=p.src});
+
+async function boot(){
+  let names; try{names=await discover()}catch(e){names=Object.keys(META)}
+  const known=Object.keys(META).filter(n=>names.includes(n));
+  const unk=names.filter(n=>!META[n]).sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
+  PH=[...known,...unk].map(n=>{const m=META[n];return{name:n,src:"images/"+encodeURIComponent(n),sec:m?m[0]:(/^(bachpan|kid|child)/i.test(n)?"kid":"more"),msg:m?m[1]:POOL[hash(n)%POOL.length],ps:PS[hash(n+"x")%PS.length]}});
+  await Promise.race([Promise.all(PH.map(load)),new Promise(r=>setTimeout(r,7000))]);
+  render(); progress(false);
+  $("open").disabled=false;$("mute").disabled=false;$("open").textContent="Kholo na ✨";$("hint").style.display="block";
+}
+
+/* cards */
+function render(){
+  const box=$("secs");box.innerHTML="";ALL=[];
+  SECS.forEach(([k,title,col])=>{
+    const list=PH.filter(p=>p.sec===k);if(!list.length)return;
+    const s=document.createElement("section");s.innerHTML=`<h2 class="sec" style="--c:${col}"><span>${title}</span></h2>`;
+    const g=document.createElement("div");g.className="collage";s.appendChild(g);box.appendChild(s);
+    list.forEach(p=>{
+      const i=ALL.length;ALL.push(p);
+      const f=document.createElement("figure");f.className="card";f.style.setProperty("--c",COLS[i%5]);f.style.setProperty("--r",TILT[i%6]+"deg");
+      const stk=document.createElement("span");stk.className="stk";stk.style.setProperty("--sd",(i*.3)+"s");
+      const im=new Image();im.src=p.src;im.alt="Ashi";im.decoding="async";const d=DIM[p.name];if(d){im.width=d[0];im.height=d[1]}else im.style.aspectRatio="3/4";
+      const b=document.createElement("figcaption");
+      f.append(stk,im,b);f.onclick=()=>openLb(i);g.appendChild(f);
+      p.stk=stk;p.bub=b;p.el=f;p.i=i;paint(p);
+    });
+  });
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const el=e.target;el.classList.add("show");setTimeout(()=>el.style.transitionDelay="0ms",1000);io.unobserve(el)}}),{threshold:.05});
+  document.querySelectorAll(".card").forEach((el,i)=>{el.style.transitionDelay=(i%3)*100+"ms";io.observe(el)});
+}
+function paint(p){
+  const r=READ.has(p.name);
+  p.bub.className="bubble"+(r?"":" teaser");p.bub.textContent=r?p.msg:"💌 Tap karo, tumhare liye message hai!";
+  p.stk.textContent=r?"✅":STK[p.i%STK.length];
+}
+function progress(celebrate){
+  const n=ALL.filter(p=>READ.has(p.name)).length,t=ALL.length,done=t>0&&n===t;
+  $("rc").textContent=n;$("rt").textContent=t;$("fill").style.width=(t?n/t*100:0)+"%";
+  $("story").textContent=done?"🔁 Dobara dekho":(n?"▶ Story mode: aage padho":"▶ Story mode: sab messages padho");
+  $("lockic").textContent=done?"🔓":"🔒";
+  $("locktxt").innerHTML=done?"Tumne sab messages padh liye! 🎉<br>Ab surprise khul gaya 👇":`Ek surprise tumhara wait kar raha hai!<br>Bas baaki <b>${t-n}</b> messages padhne hain 💌`;
+  $("finbtn").disabled=!done;$("finbtn").classList.toggle("pulse",done);
+  if(done&&celebrate&&!celebrated){celebrated=true;confetti(40);toast("🎉 Sab messages padh liye! Neeche surprise khul gaya 🎁")}
+}
+function toast(t){const e=$("toast");e.textContent=t;e.classList.add("on");setTimeout(()=>e.classList.remove("on"),4500)}
+
+/* lightbox */
+function openLb(i){
+  cur=Math.max(0,Math.min(ALL.length-1,i));const p=ALL[cur];
+  const f=$("frame");f.style.animation="none";void f.offsetWidth;f.style.animation="";
+  $("lbimg").src=p.src;$("lbmsg").textContent=p.msg;$("lbmsg").style.background=COLS[cur%5];$("lbps").textContent=p.ps;
+  $("lbcnt").textContent=`Photo ${cur+1} / ${ALL.length}`;
+  $("prev").disabled=cur===0;$("next").textContent=cur===ALL.length-1?"Khatam ✔":"Aage ➜";
+  likeUI();$("lb").classList.add("open");$("lb").scrollTop=0;document.body.classList.add("lock");
+  clearTimeout(mt);mt=setTimeout(()=>{if(!READ.has(p.name)){READ.add(p.name);sv("ashi_read",READ);paint(p);progress(true)}},1200);
+}
+function closeLb(){clearTimeout(mt);$("lb").classList.remove("open");document.body.classList.remove("lock")}
+function likeUI(){const on=LIKED.has(ALL[cur].name);$("like").classList.toggle("on",on);$("like").textContent=on?"💖 Pasand kiya!":"♥ Pasand aaya"}
+function like(on){const n=ALL[cur].name;if(on===undefined)on=!LIKED.has(n);on?LIKED.add(n):LIKED.delete(n);sv("ashi_like",LIKED);likeUI();if(on){const h=document.createElement("div");h.className="bigheart";h.textContent="💖";$("frame").appendChild(h);setTimeout(()=>h.remove(),900)}}
+$("close").onclick=closeLb;
+$("prev").onclick=()=>openLb(cur-1);
+$("next").onclick=()=>{if(cur>=ALL.length-1){closeLb();window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"})}else openLb(cur+1)};
+$("like").onclick=()=>like();
+$("story").onclick=()=>{const k=ALL.findIndex(p=>!READ.has(p.name));openLb(k<0?0:k)};
+let lt=0;$("lbimg").addEventListener("click",()=>{const n=Date.now();if(n-lt<350)like(true);lt=n});
+document.addEventListener("keydown",e=>{if(!$("lb").classList.contains("open"))return;if(e.key==="Escape")closeLb();if(e.key==="ArrowLeft")openLb(cur-1);if(e.key==="ArrowRight")$("next").onclick()});
+let sx=0;$("lb").addEventListener("touchstart",e=>sx=e.touches[0].clientX,{passive:true});
+$("lb").addEventListener("touchend",e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>60){dx<0?$("next").onclick():openLb(cur-1)}},{passive:true});
+
+/* finale */
+$("finbtn").onclick=()=>{$("ftxt").textContent=FINAL;$("fin").classList.add("open");document.body.classList.add("lock");confetti(50)};
+$("fclose").onclick=()=>{$("fin").classList.remove("open");document.body.classList.remove("lock")};
+$("again").onclick=()=>{$("fin").classList.remove("open");document.body.classList.remove("lock");window.scrollTo({top:0,behavior:"smooth"})};
+
+/* effects */
+function confetti(n){const em=["💖","🌸","✨","🥔","🎀","⭐","🍓","🦋"];for(let i=0;i<n;i++){const p=document.createElement("span");p.className="fx";p.textContent=em[Math.floor(Math.random()*em.length)];p.style.left=Math.random()*100+"vw";p.style.fontSize=(16+Math.random()*16)+"px";p.style.setProperty("--dx",(Math.random()*120-60)+"px");const d=3+Math.random()*3;p.style.animationDuration=d+"s";p.style.animationDelay=Math.random()*1.2+"s";document.body.appendChild(p);setTimeout(()=>p.remove(),(d+1.4)*1000)}}
+document.addEventListener("pointerdown",e=>{for(let i=0;i<4;i++){const s=document.createElement("span");s.className="burst";s.textContent=["✦","♥","✧","💗"][i];s.style.left=(e.clientX-8+Math.random()*44-22)+"px";s.style.top=(e.clientY-8+Math.random()*20-10)+"px";s.style.fontSize=(12+Math.random()*10)+"px";s.style.color=["#ff4f8b","#f4a300","#b388ff","#4cc9a0"][i];document.body.appendChild(s);setTimeout(()=>s.remove(),1300)}});
+setInterval(()=>{if(document.hidden)return;const h=document.createElement("span");h.className="hrt";h.textContent=["♥","♡","✿"][Math.floor(Math.random()*3)];h.style.left=Math.random()*100+"vw";h.style.fontSize=(12+Math.random()*14)+"px";h.style.color=["#ffb3cd","#ff8fb1","#d4c4ff"][Math.floor(Math.random()*3)];const d=8+Math.random()*6;h.style.animationDuration=d+"s";document.body.appendChild(h);setTimeout(()=>h.remove(),d*1000+200)},1500);
+
+/* music: built-in music-box lullaby (original) or your own mp3 */
+const Synth=(()=>{let ctx,master,timer,next=0,offT;const B=60/84,mf=m=>440*Math.pow(2,(m-69)/12);
+ const CH=[[60,64,67],[57,60,64],[53,57,60],[55,59,62]],ARP=[0,1,2,1,0,1,2,1];
+ const MEL=[[[88,2],[86,1],[84,1]],[[84,2],[81,2]],[[81,2],[84,1],[86,1]],[[86,2],[83,1],[79,1]],[[79,1],[84,1],[88,2]],[[88,1],[86,1],[84,2]],[[81,2],[84,1],[81,1]],[[83,2],[86,1],[84,1]]];
+ function init(){ctx=new(window.AudioContext||window.webkitAudioContext)();master=ctx.createGain();master.gain.value=0;const d=ctx.createDelay(1);d.delayTime.value=B*.75;const fb=ctx.createGain();fb.gain.value=.38;const lp=ctx.createBiquadFilter();lp.type="lowpass";lp.frequency.value=2800;const w=ctx.createGain();w.gain.value=.35;master.connect(ctx.destination);master.connect(d);d.connect(lp);lp.connect(fb);fb.connect(d);lp.connect(w);w.connect(ctx.destination)}
+ function note(m,t,v,ty,a,dc){const o=ctx.createOscillator(),g=ctx.createGain();o.type=ty;o.frequency.value=mf(m);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+a);g.gain.exponentialRampToValueAtTime(.0001,t+dc);o.connect(g);g.connect(master);o.start(t);o.stop(t+dc+.05)}
+ function loop(t0){for(let b=0;b<8;b++){const ch=CH[b%4],bt=t0+b*4*B;ch.forEach(m=>note(m,bt,.045,"sine",.3,4*B));note(ch[0]-24,bt,.11,"sine",.02,2*B);note(ch[0]-24,bt+2*B,.09,"sine",.02,2*B);for(let e=0;e<8;e++)note(ch[ARP[e]]+12,bt+e*B/2,.08,"triangle",.005,1.4);let c=0;MEL[b].forEach(([m,l])=>{note(m,bt+c*B,.11,"sine",.005,2.2);c+=l})}}
+ return{play(){clearTimeout(offT);if(!ctx)init();ctx.resume();master.gain.setTargetAtTime(.6,ctx.currentTime,.25);if(!timer){next=ctx.currentTime+.15;loop(next);next+=32*B;timer=setInterval(()=>{if(ctx.currentTime>next-3){loop(next);next+=32*B}},500)}},pause(){if(!ctx)return;master.gain.setTargetAtTime(0,ctx.currentTime,.12);offT=setTimeout(()=>ctx.suspend(),450)}}})();
+let audio=null,useFile=!!SONG_FILE,playing=false,was=false;
+function startSong(){if(useFile){if(!audio){audio=new Audio(SONG_FILE);audio.loop=true;audio.onerror=()=>{useFile=false;if(playing)Synth.play()}}audio.play().catch(()=>{useFile=false;Synth.play()})}else Synth.play();playing=true;$("music").classList.add("on");$("lbl").textContent="Gaana ON"}
+function stopSong(){if(useFile&&audio)audio.pause();else Synth.pause();playing=false;$("music").classList.remove("on");$("lbl").textContent="Gaana OFF"}
+$("music").onclick=()=>playing?stopSong():startSong();
+document.addEventListener("visibilitychange",()=>{if(document.hidden){was=playing;if(playing)stopSong()}else if(was)startSong()});
+
+/* intro letter */
+let li=0,ty=null;
+function showLetter(){const t=Array.from(LETTER[li]);$("ltxt").textContent="";$("ldots").innerHTML=LETTER.map((_,k)=>`<i class="${k<=li?"on":""}"></i>`).join("");$("lnext").textContent=li===LETTER.length-1?"Photos dekho 📸":"Aage ➜";let k=0;clearInterval(ty);ty=setInterval(()=>{$("ltxt").textContent=t.slice(0,++k).join("");if(k>=t.length)clearInterval(ty)},28)}
+$("lnext").onclick=()=>{const t=LETTER[li];if(Array.from($("ltxt").textContent).length<Array.from(t).length){clearInterval(ty);$("ltxt").textContent=t;return}if(li<LETTER.length-1){li++;showLetter()}else{$("gate").classList.add("gone");document.body.classList.remove("lock");document.body.classList.add("ready");setTimeout(()=>$("gate").remove(),800);window.scrollTo(0,0)}};
+$("open").onclick=()=>{startSong();$("st1").style.display="none";$("st2").style.display="flex";showLetter()};
+$("mute").onclick=()=>{$("lbl").textContent="Gaana OFF";$("st1").style.display="none";$("st2").style.display="flex";showLetter()};
+boot();
+</script>
+</body>
+</html>
